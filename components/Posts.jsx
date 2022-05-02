@@ -1,39 +1,36 @@
 import Post from './Post'
+import { useEffect, useState } from 'react'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { db } from '../firebase'
 
-const posts = [
-  {
-    id: '123',
-    username: 'JohnESwan3',
-    userImg:
-      'https://www.theloadout.com/wp-content/uploads/2022/02/elden-ring-pot-boy-location-1.jpg',
-    img: 'https://www.theloadout.com/wp-content/uploads/2022/02/elden-ring-pot-boy-location-1.jpg',
-    caption: 'Pot Boy 420',
-  },
-  {
-    id: '456',
-    username: 'JohnESwan3',
-    userImg:
-      'https://www.theloadout.com/wp-content/uploads/2022/02/elden-ring-pot-boy-location-1.jpg',
-    img: 'https://www.theloadout.com/wp-content/uploads/2022/02/elden-ring-pot-boy-location-1.jpg',
-    caption: 'Pot Boy 420',
-  },
-]
 function Posts() {
+  const [posts, setPosts] = useState([])
+
+  useEffect(
+    () =>
+      onSnapshot(
+        query(collection(db, 'posts'), orderBy('timestamp', 'desc')),
+        (snapshot) => {
+          setPosts(snapshot.docs)
+        }
+      ),
+    [db]
+  )
+
+  console.log(posts)
+
   return (
     <div>
       {posts.map((post) => (
         <Post
           key={post.id}
           id={post.id}
-          username={post.username}
-          userImg={post.userImg}
-          img={post.img}
-          caption={post.caption}
+          username={post.data().username}
+          userImg={post.data().profileImg}
+          img={post.data().image}
+          caption={post.data().caption}
         />
       ))}
-      {/* Post */}
-      {/* Post */}
-      {/* Post */}
     </div>
   )
 }
