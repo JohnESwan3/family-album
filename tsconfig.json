@@ -23,7 +23,8 @@
     "components/Feed.jsx",
     "components/Header.jsx",
     "components/Story.jsx",
-    "components/Stories.jsx"
+    "components/Stories.jsx",
+    "pages/_app.jsx"
   ],
   "exclude": ["node_modules"]
 }
