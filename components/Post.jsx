@@ -7,8 +7,50 @@ import {
   PaperAirplaneIcon,
 } from '@heroicons/react/outline'
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid'
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp,
+} from 'firebase/firestore'
+import { useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
+import { db } from '../firebase'
+import Moment from 'react-moment'
 
 function Post({ id, username, userImg, img, caption }) {
+  const { data: session } = useSession()
+  const [comment, setComment] = useState('')
+  const [comments, setComments] = useState([])
+
+  useEffect(
+    () =>
+      onSnapshot(
+        query(
+          collection(db, 'posts', id, 'comments'),
+          orderBy('timestamp', 'desc')
+        ),
+        (snapshot) => setComments(snapshot.docs)
+      ),
+    [db]
+  )
+
+  const sendComment = async (e) => {
+    e.preventDefault()
+
+    const commentToSend = comment
+    setComment('')
+
+    await addDoc(collection(db, 'posts', id, 'comments'), {
+      comment: commentToSend,
+      username: session.user.username,
+      userImage: session.user.image,
+      timestamp: serverTimestamp(),
+    })
+  }
+  console.log(comments)
   return (
     <div className="my-7 rounded-md border border-slate-300 bg-white shadow-md">
       {/* Header */}
@@ -40,16 +82,47 @@ function Post({ id, username, userImg, img, caption }) {
       </p>
 
       {/* Comments */}
+      {comments.length > 0 && (
+        <div className="ml-10 h-20 overflow-y-scroll scrollbar-thin scrollbar-thumb-black">
+          {comments.map((comment) => (
+            <div key={comment.id} className="mb-3 flex items-center space-x-2">
+              <img
+                src={comment.data().userImage}
+                alt={comment.data().username}
+                className="h-7 rounded-full object-fill"
+              />
+              <p className="flex-1 text-sm">
+                <span className="mr-2 font-bold">
+                  {comment.data().username}
+                </span>
+                {comment.data().comment}
+              </p>
+              <Moment fromNow className="pr-5 text-sm">
+                {comment.data().timestamp?.toDate()}
+              </Moment>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Input Box */}
       <form className="flex items-center p-4">
         <EmojiHappyIcon className="h-7 w-7" />
         <input
           type="text"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
           placeholder="Add a comment..."
           className="flex-1 border-none outline-none focus:ring-0"
         />
-        <button className="font-semibold text-sky-500">Post</button>
+        <button
+          type="submit"
+          disabled={!comment.trim()}
+          onClick={sendComment}
+          className="font-semibold text-sky-500"
+        >
+          Post
+        </button>
       </form>
     </div>
   )
