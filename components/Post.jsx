@@ -4,7 +4,7 @@ import {
   DotsHorizontalIcon,
   EmojiHappyIcon,
   HeartIcon,
-  PaperAirplaneIcon,
+  DownloadIcon,
 } from '@heroicons/react/outline'
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid'
 import {
@@ -30,7 +30,7 @@ function Post({ id, username, userImg, img, caption }) {
       onSnapshot(
         query(
           collection(db, 'posts', id, 'comments'),
-          orderBy('timestamp', 'desc')
+          orderBy('timestamp', 'asc')
         ),
         (snapshot) => setComments(snapshot.docs)
       ),
@@ -71,7 +71,7 @@ function Post({ id, username, userImg, img, caption }) {
         <div className="flex space-x-4">
           <HeartIcon className="btn" />
           <ChatIcon className="btn" />
-          <PaperAirplaneIcon className="btn" />
+          {/* <DownloadIcon className="btn" /> */}
         </div>
         <BookmarkIcon className="btn" />
       </div>
