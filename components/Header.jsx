@@ -65,18 +65,18 @@ function Header() {
           <MenuIcon className="h-6 cursor-pointer md:hidden" />
           {session ? (
             <>
-              <div className="navBtn relative">
+              {/* <div className="navBtn relative">
                 <PaperAirplaneIcon className="navBtn rotate-45" />
                 <div className="absolute -top-1 -right-2 flex h-5 w-5 animate-pulse items-center justify-center rounded-full bg-red-500 text-xs text-white">
                   3
                 </div>
-              </div>
+              </div> */}
               <PlusCircleIcon
                 onClick={() => setOpen(true)}
                 className="navBtn"
               />
-              <UserGroupIcon className="navBtn" />
-              <HeartIcon className="navBtn" />
+              {/* <UserGroupIcon className="navBtn" /> */}
+              {/* <HeartIcon className="navBtn" /> */}
 
               <img
                 onClick={signOut}

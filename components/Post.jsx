@@ -14,6 +14,9 @@ import {
   orderBy,
   query,
   serverTimestamp,
+  setDoc,
+  doc,
+  deleteDoc,
 } from 'firebase/firestore'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
@@ -24,6 +27,8 @@ function Post({ id, username, userImg, img, caption }) {
   const { data: session } = useSession()
   const [comment, setComment] = useState('')
   const [comments, setComments] = useState([])
+  const [likes, setLikes] = useState([])
+  const [hasLiked, setHasLiked] = useState(false)
 
   useEffect(
     () =>
@@ -34,8 +39,34 @@ function Post({ id, username, userImg, img, caption }) {
         ),
         (snapshot) => setComments(snapshot.docs)
       ),
-    [db]
+    [db, id]
   )
+
+  useEffect(
+    () =>
+      onSnapshot(collection(db, 'posts', id, 'likes'), (snapshot) =>
+        setLikes(snapshot.docs)
+      ),
+    [db, id]
+  )
+
+  useEffect(
+    () =>
+      setHasLiked(
+        likes.findIndex((like) => like.id === session?.user?.uid) !== -1
+      ),
+    [likes]
+  )
+
+  const likePost = async () => {
+    if (hasLiked) {
+      await deleteDoc(doc(db, 'posts', id, 'likes', session.user.uid))
+    } else {
+      await setDoc(doc(db, 'posts', id, 'likes', session.user.uid), {
+        username: session.user.username,
+      })
+    }
+  }
 
   const sendComment = async (e) => {
     e.preventDefault()
@@ -50,7 +81,7 @@ function Post({ id, username, userImg, img, caption }) {
       timestamp: serverTimestamp(),
     })
   }
-  console.log(comments)
+
   return (
     <div className="my-7 rounded-md border border-slate-300 bg-white shadow-md">
       {/* Header */}
@@ -69,7 +100,11 @@ function Post({ id, username, userImg, img, caption }) {
       {/* Buttons */}
       <div className="flex justify-between p-4">
         <div className="flex space-x-4">
-          <HeartIcon className="btn" />
+          {hasLiked ? (
+            <HeartIconFilled onClick={likePost} className="btn text-sky-500" />
+          ) : (
+            <HeartIcon onClick={likePost} className="btn" />
+          )}
           <ChatIcon className="btn" />
           {/* <DownloadIcon className="btn" /> */}
         </div>
@@ -77,8 +112,23 @@ function Post({ id, username, userImg, img, caption }) {
       </div>
 
       {/* Caption */}
-      <p className="truncate p-5">
+
+      <p className="space-y-4 truncate p-5">
         <span className="mr-1 font-bold">{username} </span> {caption}
+        <div className="flex flex-row space-x-4">
+          {likes.length == 1 && (
+            <p className="mb-1 font-semibold">{likes.length} like</p>
+          )}
+          {likes.length > 1 && (
+            <p className="mb-1 font-semibold">{likes.length} likes</p>
+          )}
+          {comments.length == 1 && (
+            <p className="mb-1 font-semibold">{comments.length} comment</p>
+          )}
+          {comments.length > 1 && (
+            <p className="mb-1 font-semibold">{comments.length} comments</p>
+          )}
+        </div>
       </p>
 
       {/* Comments */}
