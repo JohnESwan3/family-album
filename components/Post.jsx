@@ -92,7 +92,7 @@ function Post({ id, username, userImg, img, caption }) {
           className="mr-3 h-12 w-12 rounded-full border object-fill p-1"
         />
         <p className="flex-1 font-bold">{username}</p>
-        <DotsHorizontalIcon className="h-5" />
+        {/* <DotsHorizontalIcon className="h-5" /> */}
       </div>
       {/* img */}
       <img src={img} className="w-full object-cover" alt="" />
@@ -108,7 +108,7 @@ function Post({ id, username, userImg, img, caption }) {
           <ChatIcon className="btn" />
           {/* <DownloadIcon className="btn" /> */}
         </div>
-        <BookmarkIcon className="btn" />
+        {/* <BookmarkIcon className="btn" /> */}
       </div>
 
       {/* Caption */}

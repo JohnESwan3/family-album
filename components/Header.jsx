@@ -44,18 +44,18 @@ function Header() {
           />
         </div>
 
-        {/* Middle - search input field */}
+        {/* Middle - search input field change p-8 back to p-3 when enabling search bar */}
         <div className="max-w-xs">
-          <div className="relative mt-1 rounded-md p-3">
+          <div className="relative mt-1 rounded-md p-8">
             {/* Search Icon Div */}
-            <div className="pointer-events-none absolute inset-y-0 flex items-center pl-3">
+            {/* <div className="pointer-events-none absolute inset-y-0 flex items-center pl-3">
               <SearchIcon className="h-5 w-5 text-slate-500" />
             </div>
             <input
               className="block w-full rounded-md border-slate-300 bg-slate-50 pl-10 focus:border-black focus:ring-black sm:text-sm"
               type="text"
               placeholder="Search"
-            />
+            /> */}
           </div>
         </div>
 
@@ -66,17 +66,17 @@ function Header() {
           {session ? (
             <>
               <div className="navBtn relative">
-                <PaperAirplaneIcon className="navBtn rotate-45" />
+                {/* <PaperAirplaneIcon className="navBtn rotate-45" />
                 <div className="absolute -top-1 -right-2 flex h-5 w-5 animate-pulse items-center justify-center rounded-full bg-red-500 text-xs text-white">
                   3
-                </div>
+                </div> */}
               </div>
               <PlusCircleIcon
                 onClick={() => setOpen(true)}
                 className="navBtn"
               />
-              <UserGroupIcon className="navBtn" />
-              <HeartIcon className="navBtn" />
+              {/* <UserGroupIcon className="navBtn" /> */}
+              {/* <HeartIcon className="navBtn" /> */}
 
               <img
                 onClick={signOut}
