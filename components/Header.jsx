@@ -31,14 +31,14 @@ function Header() {
         </div>
         <div
           onClick={() => router.push('/')}
-          className="relative inline-grid w-24 flex-shrink-0 cursor-pointer lg:hidden"
+          className="relative inline-grid w-10 flex-shrink-0 cursor-pointer lg:hidden"
         >
           <Image src="/BFFASquare.webp" layout="fill" objectFit="contain" />
         </div>
 
         {/* Middle - search input field change p-8 back to p-3 when enabling search bar */}
         <div className="max-w-xs">
-          <div className="relative mt-1 rounded-md p-8">
+          <div className="relative w-10 rounded-md p-8">
             {/* Search Icon Div */}
             {/* <div className="pointer-events-none absolute inset-y-0 flex items-center pl-3">
               <SearchIcon className="h-5 w-5 text-slate-500" />
