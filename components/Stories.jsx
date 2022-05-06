@@ -8,7 +8,7 @@ function Stories() {
   const { data: session } = useSession()
 
   useEffect(() => {
-    const suggestions = [...Array(20)].map((_, i) => ({
+    const suggestions = [...Array(0)].map((_, i) => ({
       ...faker.helpers.contextualCard(),
       id: i,
     }))

@@ -5,7 +5,7 @@ function Suggestions() {
   const [suggestions, setSuggestions] = useState([])
 
   useEffect(() => {
-    const suggestions = [...Array(5)].map((_, i) => ({
+    const suggestions = [...Array(0)].map((_, i) => ({
       ...faker.helpers.contextualCard(),
       id: i,
     }))
@@ -15,9 +15,9 @@ function Suggestions() {
     <div className="mt-4 ml-10">
       <div className="mb-5 flex justify-between text-sm">
         <h3 className="text-sm font-bold text-slate-400">
-          Suggestions for you
+          Users | Empty for Now
         </h3>
-        <button className="font-semibold text-slate-700">See All</button>
+        {/* <button className="font-semibold text-slate-700">See All</button> */}
       </div>
 
       {suggestions.map((profile) => (
