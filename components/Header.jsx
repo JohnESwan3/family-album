@@ -25,23 +25,15 @@ function Header() {
         {/* Placeholder Icons */}
         <div
           onClick={() => router.push('/')}
-          className="relative hidden w-24 cursor-pointer lg:inline-grid"
+          className="relative hidden w-60 cursor-pointer lg:inline-grid"
         >
-          <Image
-            src="https://links.papareact.com/ocw"
-            layout="fill"
-            objectFit="contain"
-          />
+          <Image src="/BFFABig.webp" layout="fill" objectFit="contain" />
         </div>
         <div
           onClick={() => router.push('/')}
-          className="relative inline-grid w-10 flex-shrink-0 cursor-pointer lg:hidden"
+          className="relative inline-grid w-24 flex-shrink-0 cursor-pointer lg:hidden"
         >
-          <Image
-            src="https://links.papareact.com/jjm"
-            layout="fill"
-            objectFit="contain"
-          />
+          <Image src="/BFFASquare.webp" layout="fill" objectFit="contain" />
         </div>
 
         {/* Middle - search input field change p-8 back to p-3 when enabling search bar */}
@@ -65,12 +57,12 @@ function Header() {
           {/* <MenuIcon className="h-6 cursor-pointer md:hidden" /> */}
           {session ? (
             <>
-              <div className="navBtn relative">
-                {/* <PaperAirplaneIcon className="navBtn rotate-45" />
+              {/* <div className="navBtn relative">
+                <PaperAirplaneIcon className="navBtn rotate-45" />
                 <div className="absolute -top-1 -right-2 flex h-5 w-5 animate-pulse items-center justify-center rounded-full bg-red-500 text-xs text-white">
                   3
-                </div> */}
-              </div>
+                </div>
+              </div> */}
               <PlusCircleIcon
                 onClick={() => setOpen(true)}
                 className="navBtn"
