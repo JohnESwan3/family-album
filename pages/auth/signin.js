@@ -6,7 +6,7 @@ export default function SignIn({ providers }) {
     <>
       <Header />
 
-      <div className="-mt-56 flex min-h-screen flex-col items-center justify-center py-2 px-14 text-center">
+      <div className="flex min-h-screen flex-col items-center justify-center py-2 px-14 text-center dark:bg-slate-700">
         <img className="w-80" src="/BFFABig.webp" alt="" />
 
         <div className="mt-40">
