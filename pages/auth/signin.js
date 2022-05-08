@@ -7,13 +7,13 @@ export default function SignIn({ providers }) {
       <Header />
 
       <div className="flex min-h-screen flex-col items-center justify-center py-2 px-14 text-center dark:bg-slate-700">
-        <img className="w-80" src="/BFFABig.webp" alt="" />
+        <img className="-mt-56 w-80" src="/BFFABig.webp" alt="" />
 
-        <div className="mt-40">
+        <div className="">
           {Object.values(providers).map((provider) => (
             <div key={provider.name}>
               <button
-                className="rounded-lg bg-sky-500 p-3 text-white"
+                className="rounded-lg bg-sky-500 p-3 text-white transition-colors duration-150 ease-out hover:bg-sky-600"
                 onClick={() =>
                   SignIntoProvider(provider.id, { callbackUrl: '/' })
                 }
