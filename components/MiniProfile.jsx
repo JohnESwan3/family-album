@@ -14,8 +14,10 @@ function MiniProfile() {
       />
 
       <div className="mx-4 flex-1">
-        <h2 className="font-bold">{session?.user?.username}</h2>
-        <h3 className="text-sm text-slate-400">Welcome</h3>
+        <h2 className="font-bold dark:text-slate-50">
+          {session?.user?.username}
+        </h2>
+        <h3 className="text-sm text-slate-400 dark:text-slate-300">Welcome</h3>
       </div>
 
       <button onClick={signOut} className="text-sm font-semibold text-sky-500">
