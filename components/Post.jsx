@@ -133,7 +133,7 @@ function Post({ id, username, userImg, img, caption }) {
 
       {/* Comments */}
       {comments.length > 0 && (
-        <div className="ml-10 h-20 overflow-y-scroll scrollbar-thin scrollbar-thumb-black dark:text-slate-50">
+        <div className="h-20 overflow-y-scroll bg-slate-100 p-3 scrollbar-thin scrollbar-thumb-black dark:bg-slate-800 dark:text-slate-50">
           {comments.map((comment) => (
             <div key={comment.id} className="mb-3 flex items-center space-x-2">
               <img
