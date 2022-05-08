@@ -17,7 +17,7 @@ function Stories() {
   }, [])
 
   return (
-    <div className="mt-8 flex space-x-2 overflow-x-scroll rounded-md border border-slate-300 bg-white p-6 shadow-md scrollbar-thin scrollbar-thumb-black dark:border-slate-700 dark:bg-slate-900">
+    <div className="mt-8 flex space-x-2 overflow-x-scroll rounded-md border border-slate-300 bg-white p-6 shadow-md scrollbar-thin scrollbar-thumb-black">
       {session && (
         <Story img={session.user.image} username={session.user.username} />
       )}

@@ -104,7 +104,7 @@ function Modal() {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all dark:bg-slate-900 sm:my-8 sm:w-full sm:max-w-sm sm:p-6 sm:align-middle">
+            <div className="inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6 sm:align-middle">
               <div>
                 <div>
                   {selectedFile ? (
@@ -117,10 +117,10 @@ function Modal() {
                   ) : (
                     <div
                       onClick={() => filePickerRef.current.click()}
-                      className="mx-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-red-100 dark:bg-red-700"
+                      className="mx-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-full"
                     >
                       <CameraIcon
-                        className="h-6 w-6 text-red-600 dark:text-red-100"
+                        className="h-6 w-6 text-red-600"
                         aria-hidden="true"
                       />
                     </div>
@@ -129,7 +129,7 @@ function Modal() {
                   <div className="mt-3 text-center sm:mt-5">
                     <Dialog.Title
                       as="h3"
-                      className="text-lg font-medium leading-6 text-slate-900 dark:text-slate-50"
+                      className="text-lg font-medium leading-6 text-slate-900"
                     >
                       Upload a Photo
                     </Dialog.Title>
@@ -144,7 +144,7 @@ function Modal() {
                     <div className="mt-2">
                       <input
                         type="text"
-                        className="w-full border-none text-center focus:ring-0 dark:bg-slate-900 dark:text-slate-50"
+                        className="w-full border-none text-center focus:ring-0"
                         placeholder="Please enter a caption..."
                         ref={captionRef}
                       />
@@ -156,7 +156,7 @@ function Modal() {
                     type="button"
                     disabled={!selectedFile}
                     onClick={uploadPost}
-                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300 hover:disabled:bg-slate-300 dark:disabled:bg-slate-700 dark:hover:disabled:bg-slate-600 sm:text-sm"
+                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300 hover:disabled:bg-slate-300 sm:text-sm"
                   >
                     {loading ? 'Uploading...' : 'Upload Post'}
                   </button>

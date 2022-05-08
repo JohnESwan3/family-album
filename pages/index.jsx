@@ -6,7 +6,7 @@ import Modal from '../components/Modal'
 
 export default function Home() {
   return (
-    <div className="h-screen overflow-y-scroll bg-slate-50 scrollbar-hide dark:bg-slate-800">
+    <div className="h-screen overflow-y-scroll bg-slate-50 scrollbar-hide">
       <Head>
         <title>Family Album</title>
         <link rel="icon" href="/favicon.ico" />

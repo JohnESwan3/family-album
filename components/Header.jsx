@@ -19,8 +19,8 @@ function Header() {
   const router = useRouter()
 
   return (
-    <div className="sticky top-0 z-50 border-b bg-white shadow-sm dark:border-slate-900 dark:bg-slate-900 dark:text-slate-300">
-      <div className="mx-5 flex max-w-6xl justify-between bg-white dark:bg-slate-900 lg:mx-auto">
+    <div className="sticky top-0 z-50 border-b bg-white shadow-sm ">
+      <div className="mx-5 flex max-w-6xl justify-between bg-white lg:mx-auto">
         {/* Left */}
         {/* Placeholder Icons */}
         <div

@@ -83,7 +83,7 @@ function Post({ id, username, userImg, img, caption }) {
   }
 
   return (
-    <div className="my-7 rounded-md border border-slate-300 bg-white shadow-md dark:border-slate-700 dark:bg-slate-900">
+    <div className="my-7 rounded-md border border-slate-300 bg-white shadow-md">
       {/* Header */}
       <div className="flex items-center p-5">
         <img
@@ -91,7 +91,7 @@ function Post({ id, username, userImg, img, caption }) {
           alt={username}
           className="mr-3 h-12 w-12 rounded-full border object-fill p-1"
         />
-        <p className="flex-1 font-bold dark:text-slate-50">{username}</p>
+        <p className="flex-1 font-bold">{username}</p>
         {/* <DotsHorizontalIcon className="h-5" /> */}
       </div>
       {/* img */}
@@ -113,7 +113,7 @@ function Post({ id, username, userImg, img, caption }) {
 
       {/* Caption */}
 
-      <p className="space-y-4 truncate p-5 dark:text-slate-50">
+      <p className="space-y-4 truncate p-5">
         <span className="mr-1 font-bold">{username} </span> {caption}
         <div className="flex flex-row space-x-4">
           {likes.length == 1 && (
@@ -133,7 +133,7 @@ function Post({ id, username, userImg, img, caption }) {
 
       {/* Comments */}
       {comments.length > 0 && (
-        <div className="h-20 overflow-y-scroll bg-slate-100 p-3 scrollbar-thin scrollbar-thumb-black dark:bg-slate-800 dark:text-slate-50">
+        <div className="h-20 overflow-y-scroll bg-slate-100 p-3 scrollbar-thin scrollbar-thumb-black">
           {comments.map((comment) => (
             <div key={comment.id} className="mb-3 flex items-center space-x-2">
               <img
@@ -156,14 +156,14 @@ function Post({ id, username, userImg, img, caption }) {
       )}
 
       {/* Input Box */}
-      <form className="flex items-center p-4 dark:bg-slate-900 dark:text-slate-50">
+      <form className="flex items-center p-4">
         <EmojiHappyIcon className="h-7 w-7" />
         <input
           type="text"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           placeholder="Add a comment..."
-          className="flex-1 border-none outline-none focus:ring-0 dark:bg-slate-900"
+          className="flex-1 border-none outline-none focus:ring-0"
         />
         <button
           type="submit"
